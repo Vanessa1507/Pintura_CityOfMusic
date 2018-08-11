@@ -1,0 +1,662 @@
+//Pintura
+PImage ImageCityOfMusic;
+
+//cuadrilateroBlanco (Cuadrilatero1)
+float posicionXCuadrilatero1 = 47.42; float posicionYCuadrilatero1 = 43.42; int anchoCuadrilatero1 = 479; int altoCuadrilatero1 = 702;
+
+//Cuadros
+void setup(){
+  //Color del fondo
+  background(#000000);
+  //Tamaño del canvas (x,y)
+  size(570,789);
+  //Imagen de la pintura
+  ImageCityOfMusic = loadImage("CityOfMusic.jpg");
+}
+
+void draw(){
+  //Cargar imagen (nombreDeLaImagen,pX,pY,tamañoX,tamañoY)
+  //image(ImageCityOfMusic, 0, 0);
+  //metodo GuitarraInferior
+  guitarra();
+  violonchelo();
+  //cuadrilateroBlanco
+  noFill();
+  stroke(#FFFFFF); strokeWeight(15);
+  rect(posicionXCuadrilatero1, posicionYCuadrilatero1, anchoCuadrilatero1, altoCuadrilatero1);
+  
+  stroke(#000000); strokeWeight(75);
+  rect(0, 0, 570, 789);
+  
+  
+}
+
+void guitarra(){
+  //Metodo cuadros de la guitarra
+  parteInternaGuitarra();
+  //CUERDAS ROJAS
+  int colorInicialCuerdasRojas= 180;
+  for(int j=0; j<3; j++){
+    for (float i = 640.75; i <= 681; i++) {
+    if((i>= 640.75 && i<=648.75) || (i>= 656.88 && i<=664.88) || (i>= 673 && i<=681)){
+      if(colorInicialCuerdasRojas <= 255){
+        stroke(colorInicialCuerdasRojas-26, 50, 20);
+        strokeWeight(1);
+        colorInicialCuerdasRojas++;
+      }
+      line(107.42, i, 223.42, i);
+      }
+    }
+  }
+  noStroke();
+  
+  //BOCA
+  float posElipseBocaX = 262.42; float posElipseBocaY = 662.42;
+  //Elipse azul
+  int tamanoInicial1= 95; int tamanoFinal1= 60;
+  for(int i= 0; i <= tamanoFinal1 ; i++){
+    int tamanoElipseAzul = tamanoInicial1-i;
+    fill(0, (i+100)*1.275, 255);
+    ellipse((posElipseBocaX+1), (posElipseBocaY-1), tamanoElipseAzul, tamanoElipseAzul);
+  }
+  //Lineas
+  strokeWeight(3);
+  stroke(#F68D39); line(223.42, 666.79, 232.42, 666.79);
+  stroke(#E29764); line(223.42, 652.04, 232.42, 654.67);
+  stroke(#C98659); line(229.42, 637.92, 240.67, 640.71);
+  stroke(#EF9F6A); line(235.04, 629.42, 245.42, 635.17);
+  stroke(#EFB68F); line(248.92, 623.68, 252.42, 632.32);
+  stroke(#CE8F29); line(259.92, 621.67, 259.92, 630.17);
+  stroke(#CE6029); line(271.67, 622.42, 269.92, 631.19);
+  stroke(#F27130); line(281.67, 625.17, 276.42, 635.17);
+  stroke(#F28C5A); line(290.42, 632.32, 281.67, 639.31);
+  stroke(#CE784D); line(299.42, 651.17, 290.42, 651.17);
+  stroke(#CE964D); line(301.17, 666.79, 292.17, 666.73);
+  
+  //Elipse naranja
+  noStroke();
+  int tamanoInicial2= 66; int tamanoFinal2= 50;
+  for(int i= 0; i <= tamanoFinal2 ; i+=5){
+    int tamanoElipseNaranja = tamanoInicial2-i;
+    fill(255, (i+80)*1.275, 0);
+    ellipse((posElipseBocaX+1), (posElipseBocaY-1), tamanoElipseNaranja, tamanoElipseNaranja);
+  }
+  //Elipse negra
+  fill(#0E0D28); ellipse(posElipseBocaX, posElipseBocaY, 45.16, 45.16);
+  //Cuadrado interno
+  noStroke(); fill(#466BB4);
+  beginShape();
+    vertex(251.94, 642.42);
+    vertex(272.9, 642.42);
+    bezierVertex(275.16, 643.61, 277.19, 645.16, 278.92, 647.01);
+    vertex(278.92, 677.83);
+    bezierVertex(274.8, 682.24, 268, 685, 262.42, 685);
+    bezierVertex(254.76, 685, 248, 681.19, 243.92, 675.36);
+    vertex(243.92, 649.48);
+    bezierVertex(245.98, 646.53, 248.73, 644.1, 251.94, 642.42);
+  endShape();
+  //Elipse, centro de la boca
+  fill(#160E0E); ellipse(posElipseBocaX, posElipseBocaY, 14.5, 14.5);
+  
+  //PUENTE
+  int colorInicialPuente= 200;
+  for (float i = 128.17; i < 139.09; i++) {
+    if(colorInicialPuente > 0){
+      stroke(255, colorInicialPuente, 0);
+      colorInicialPuente-=10;
+    }
+    line(i, 682.84, i, 636.92);
+  }
+  
+  //CUERDAS AZULES
+  stroke(#96B9DF); strokeWeight(3); line(220.4, 644.75, 518.75, 639.17); line(217.92, 660.88, 518.75, 659.42); line(219.29, 677.07, 518.75, 681);
+  
+  //LineasBlancas
+  stroke(#FFFFFF); 
+  strokeWeight(8); line(400.42, 644.96, 400.42, 677.25); 
+  strokeWeight(5); line(436.25, 641.71, 436.25, 679.25); 
+  strokeWeight(3); line(461.25, 640.71, 461.25, 679);
+  strokeWeight(5); line(517.92, 640.71, 518.92, 680.23); 
+  
+  //PuntoBlanco
+  fill(#FFFFFF); noStroke(); ellipse(449.086, 660.753, 10.333, 10.333); 
+  
+  //Botones, Azul
+  fill(#7DBEEF); rect(474.92, 648.42, 18.125, 14.875, 0, 4.06, 0, 0);
+  fill(#B3DFFF); rect(477.29, 651.17, 12, 9, 0, 0, 3.63, 0);
+  //Amarillo
+  fill(#F5E326); ellipse(481.544, 670.294, 7.125 , 7.125);
+  //Naranja
+  fill(#F17222); rect(500.919, 652.04, 8.75, 11.75, 3.44, 3.44, 3.44, 3.44);
+}
+
+void parteInternaGuitarra(){
+ //BordeNaranja
+  fill(#F5821F);  noStroke();
+  beginShape();
+    vertex(52.92, 455.42); 
+    bezierVertex(120.09, 448.75, 183.44, 446.41, 225.29, 549.65); 
+    bezierVertex(57.46, 470.75, 183.44, 456.41, 52.92, 480.42);
+  endShape(CLOSE);
+  //FondoGuitarra
+  fill(#684A9B);
+  beginShape();
+    vertex(47.42, 491.92);
+    bezierVertex(133.63, 432.92, 252.09, 577.63, 234.42, 557.75);
+    vertex(287.92, 607.35); 
+    vertex(287.92, 742.86);
+    vertex(47.42, 742.86);
+  endShape(CLOSE);
+  
+  //CuadrilaterosDelLadoIzquierdo
+  //Cafe
+  fill(#733C43); rect(52.065, 505.79, 5.583, 12.313); 
+  fill(#8C3A26); rect(53.34, 511.84, 3.458, 4.167);
+  //Naranja
+  fill(#D1721C); rect(51.17, 546.42, 14.25, 24);
+  fill(#E57D1F); rect(53.61, 550.52, 9.375, 15.789);
+  fill(#F68C1E); rect(55.67, 554, 5.25, 8.842);
+  //Magenta
+  fill(#872364); rect(51.17, 577.92, 14.25, 21.5);
+  fill(#A32B78); rect(53.04, 580.75, 10.5, 15.842);
+  fill(#BA2E81); rect(55.04, 583.77, 6.5, 9.807);
+  //Amarillo
+  fill(#8C7A2D); rect(51.17, 608.17, 13, 33.792);
+  fill(#C9AF41); rect(51.17, 613.37, 10, 23.394);
+  fill(#FCDE50); rect(53.04, 613.37, 7.5, 20.926);
+  //AmarilloMasQuemado
+  fill(#C49E4A); rect(52.17, 644.75, 15, 94.667);
+  fill(#BB9649); rect(52.17, 654.63, 15, 84.788);
+  fill(#B58E47); rect(52.17, 666.01, 15, 73.408);
+  fill(#AD8544); rect(52.17, 677.35, 15, 62.073);
+  fill(#A57D42); rect(52.17, 688.68, 15, 50.738);
+  //Azules
+  fill(#26C3E9); rect(52.17, 648.75, 10.75, 86);
+  fill(#18B3DB); rect(52.17, 658.21, 10.75, 77.026);
+  fill(#179ECC); rect(52.17, 669.11, 10.75, 66.688);
+  fill(#158DC2);  rect(52.17, 679.97, 10.75, 56.39);
+  fill(#137BB3); rect(52.17, 690.83, 10.75, 46.093);
+  
+  //CuadrilateroRosadoChillon
+  fill(#E05997); quad(140.09, 497.75, 148.75, 499.92, 148.75, 555.67, 142.75, 554.09);
+  
+  //EdificioMasAlto
+  fill(#11395C);
+  beginShape();
+    vertex(71.67, 489.75);
+    vertex(96.42, 489.75);
+    vertex(105.42, 738.92);
+    vertex(64.42, 738.92);
+    vertex(70.97, 574.08);
+  endShape(CLOSE);
+  //4VentanasPequenas
+  fill(#93D9F5); rect(75.068, 494.104, 5.297 , 5.297 , 2.135, 2.135, 2.135, 2.135); rect(75.907, 501.71, 5.297 , 5.297 , 2.135, 2.135, 2.135, 2.135); rect(75.907, 508.633, 5.297 , 5.297 , 2.135, 2.135, 2.135, 2.135); rect(75.907, 519.008, 5.297 , 5.297 , 2.135, 2.135, 2.135, 2.135);
+  //VentanaSuperior
+  fill(#1080A7); rect(73.419 , 537.753, 9.667, 27, 2.135, 2.135, 2.135, 2.135);
+  //VentanaDelMedio
+  fill(#3C8DB5); rect(72.086, 575.586, 14.167, 15.333, 2.135, 2.135, 2.135, 2.135);
+  fill(#2A74AA); rect(75.794, 582.315, 5.167, 5.167, 2.135, 2.135, 2.135, 2.135);
+  //VentanaQue sigue
+  fill(#0A5099); rect(71.669, 601.09, 13.167, 16.833 , 2.135, 2.135, 2.135, 2.135);
+  //ArcoSuperior
+  fill(#5593CE); arc(90.79, 489.75, 11.083, 11.083, 0, PI);
+  //LineaNaranja
+  int colorInicial= 255; float posInicialNaranjas= 652.79; float posFinalNaranjas= 510.54;
+  for(float i= posInicialNaranjas; i>posFinalNaranjas;i-=5){
+    if(colorInicial > 0){
+      fill(250, colorInicial, 0);
+      colorInicial-=4;
+    }
+    ellipse(83.79,i,10,3);
+  }
+  
+  //SegundoEficioAlto
+  fill(#121A24); quad(109.92, 499.92, 135.92, 499.92, 128.92, 737.92, 104.92, 737.92);
+  //BordesAzules
+  fill(#0FADC7); quad(104.92, 499.92, 109.92, 499.92, 106.4, 667.42, 104.92, 499.92);
+  fill(#2782AE); quad(135.92, 499.92, 140.09, 503.75, 138.42, 638.42, 131.88, 638.42);
+  //VentanaLarga
+  fill(#0D71B3); quad(115.17, 513.42, 130.17, 513.42, 128.17, 587.48, 114.17, 588.67);
+  fill(#3A6EB5); quad(114.17, 573.42, 128.17, 573.42, 128.17, 587.48, 114.17, 588.67); 
+  fill(#6C5A93); quad(114.17, 578.42, 128.17, 578.42, 128.17, 587.48, 114.17, 588.67);
+  fill(#1F98D0); ellipse(119.9191, 516.732, 4.625, 4.625);
+  //VentanaDelMedio
+  fill(#212339); quad(111.42, 593.42, 130.17, 593.42, 129.17, 638.42, 111.42, 638.42);
+  //VentanaInferior
+  fill(#2E1D37); quad(107.42, 719.17, 126.17, 719.17, 126.17, 737.92, 107.42, 737.92);
+  
+  //TercerEdificioAlto
+  fill(#1E212A); quad(195.11, 523.77, 213.92, 539.92, 212.92, 642.42, 190.42, 642.42);
+  //BordeAzul
+  fill(#1A2853); quad(187.75, 518.09, 194.42, 523.42, 190.42, 644.75, 186.25, 644.75);
+  //VentanaVerde
+  fill(#1A5337); quad(195.11, 523.77, 213.92, 539.92, 212.92, 590.09, 195.11, 590.09);
+  fill(#297A4F);
+  beginShape();
+    vertex(197.42, 570.17);
+    vertex(207.42, 547.42);
+    vertex(207.42, 579.54);
+    vertex(202.04, 584.42);
+    vertex(209.17, 585.42);
+    vertex(209.17, 590.09);
+    vertex(197.42, 590.09);
+  endShape(CLOSE);
+  //VentanaQueSigue
+  fill(#12645E); rect(194.294, 594.169, 17.25, 9.167, 2.5, 2.5, 2.5, 2.5);
+  //LadoDelEdificio
+  fill(#702E14); quad(213.92, 539.92, 232.42, 555.75, 232.42, 585.33, 213.37, 602.54);
+  fill(#412E1D); quad(213.37, 602.54, 232.42, 584.33, 232.42, 618.09, 212.5, 632.32);
+  fill(#1A3C54); quad(212.5, 632.54, 232.42, 618.09, 232.42, 664.88, 211.54, 664.88);
+  fill(#9A3920); rect(216.92, 563.02, 7, 35.125);
+  fill(#952D20); rect(217.94, 568.15, 4.955, 24.864);
+  fill(#BF453C); rect(218.86, 572.75, 3.125, 15.681);
+  
+  //QuintoEficioAlto
+  fill(#1E212A); quad(371.92, 540.42, 400.42, 540.42, 395.42, 737.92, 369.92, 737.92);
+  //BordesAzules
+  fill(#1C6395); quad(367.75, 540.42, 371.91, 540.41, 369.91, 737.92, 365.09, 737.92);
+  //PuertaNaranja
+  fill(#8E4B13); quad(373.59, 687.09, 393.75, 687.09, 393.75, 738.92, 373.59, 738.92);
+  fill(#AA5917); quad(374.92, 689.63, 392.42, 689.63, 392.42, 738.92, 374.92, 738.92);
+  fill(#BF6419); quad(376.41, 693.94, 390.93, 693.94, 390.93, 715.09, 376.41, 715.09);
+  fill(#DD741D); quad(376.97, 694.75, 390.37, 694.75, 390.37, 714.27, 376.97, 714.27);
+  fill(#EA7B1F); quad(377.84, 696.02, 389.5, 696.02, 389.5, 713, 377.84, 713);
+  fill(#F6881F); quad(378.59, 697.11, 388.75, 697.11, 388.75, 711.92, 378.59, 711.92);
+  
+  //SextoEdicioAlto
+  fill(#1B2226);
+  beginShape();
+    vertex(144.42, 554.53); 
+    vertex(177.75, 554.53);
+    vertex(186.25, 642.42); 
+    vertex(186.25, 679);
+    vertex(218.97, 679);
+    vertex(218.97, 738.92);
+    vertex(128.92, 738.92);
+  endShape(CLOSE);
+  //VentanaAzul
+  fill(#0C73BF); rect(146.086, 557.753, 29.333, 22.833 , 8, 8, 8, 8);
+  fill(#0C8DBF); rect(153.003, 564.753, 12.417, 12.417);
+  fill(#57C8E3); rect(156.003, 570.753, 6.417, 6.417);
+  //VentanaOscura
+  fill(#13181B);rect(146.09, 598.75, 19.833, 13.333);
+  //LineasDebajoDeLaVentana
+  float posInicialLineas= 621.42; float posFinalLineas= 636.92;
+  for(float i= posInicialLineas; i<posFinalLineas;i+=3){
+    stroke(#0D1E29);
+    strokeWeight(2);
+    line(146.09, i, 165.92, i);
+  }
+  noStroke();
+  //VentanaAzulClaraInferior
+  fill(#256BE8); rect(146.09, 692.17, 29.333, 25.25);
+  fill(#258BE8); rect(148.41, 694.17, 24.686, 21.25);
+  fill(#25A3E8); rect(151.12, 696.5, 19.265, 16.583);
+  fill(#24BAEA); rect(153.44, 698.5, 14.618, 12.583);
+  //VentanaMoradaInferior
+  fill(#466EB5); rect(146.09, 722.75, 27.01, 16.167);
+  //VentanaNaranajaInferior
+  fill(#9B4D18); rect(180.17, 692.17, 24.5, 46.75);
+  fill(#B5581A); rect(182.92, 695.42, 19.25, 43.5);
+  fill(#D3671E); rect(185.17, 698.5, 14.75, 37.333);
+  fill(#F57D20); rect(187.17, 699.98, 10.75, 34.375);
+ 
+  //cuadrilaterosFrenteAlEdificioAlto
+  //Azules
+  fill(#134BBC); rect(67.59, 720.42, 39.689 , 17.5);
+  fill(#136CBC); rect(74.75, 724.42, 26, 13.5);
+  fill(#1192BF); rect(76.59, 726.75, 22.333, 11.167);
+  fill(#16ACAC); rect(79.42, 729.17, 16.667, 8.75);
+  //Cuadro
+  fill(#A83864); rect(461.42, 620.42, 22.5, 14,125);
+  //CuadroAzul
+  fill(#166398);
+  beginShape();
+    vertex(395.06, 626.82); 
+    vertex(395.06, 641.29);
+    vertex(482.79, 641.29);
+    vertex(482.79, 632.04);
+    vertex(463.42, 632.04);
+    vertex(463.42, 621.17);
+  endShape(CLOSE);
+  
+  //Morado
+  fill(#878FC7); rect(80.42, 692.17, 24.45, 15.625, 25, 25, 25, 25);
+  fill(#9188B7); rect(83.54, 694.36, 20.25, 11.241, 25, 25, 25, 25);
+  fill(#857BB9); rect(89.5, 697.67, 8.332, 4.625, 25, 25, 25, 25);
+  fill(#878FC7); rect(81.92, 692.17, 7.875, 15.625, 25, 0, 0, 25);
+  fill(#879BC6); rect(81.17, 692.17, 7.875, 15.625, 25, 0, 0, 25);
+  fill(#87A9C6); rect(80.42, 692.17, 7.875, 15.625, 25, 0, 0, 25);
+  //Verdes
+  fill(#2F533D); rect(68.086, 648.753, 36.167, 33.167, 6.417, 6.417, 6.417, 6.417);
+  fill(#90C766); rect(68.086, 650.919, 31.623, 26.833, 6.417, 6.417, 6.417, 6.417);
+  fill(#C9C964); rect(68.086, 654.919, 19.261, 17.333, 6.417, 6.417, 6.417, 6.417);
+  fill(#FDFBEE); rect(68.086, 658.503, 10.25, 10.25, 6.417, 6.417, 6.417, 6.417);
+  
+  //CuadrosDretrasDeLasCuerdasRojas,Morada
+  fill(#34254B); quad(140.09, 642.42, 232.42, 642.42, 232.42, 677.34, 140.09, 677.34);
+  //CuadrosAzules
+  fill(#2B74BA); quad(148.25, 644.75, 167.59, 644.75, 167.59, 675, 148.25, 675);
+  
+  //EdificiosAzulesDelMedio
+  fill(#2B74BA); rect(218.29, 677.07, 58.13, 61.847 );
+  fill(#7092CB); quad(151.25, 656.17, 162.42, 656.17, 162.42, 673.75, 151.25, 673.75);
+  fill(#0B7073); quad(151.25, 656.17, 162.42, 656.17, 162.42, 673.75, 151.25, 673.75);
+  //CuboSuperior
+  fill(#15AFB5); rect(250.04, 600.04, 26.875, 22.375);
+  //CuboInferior
+  fill(#0C7275); rect(243.919, 715.705, 25.013, 22.958);
+  fill(#16B9E1); rect(247.35, 719.68, 17.845, 18.986);
+  //EdificioAzulOscuro
+  fill(#23295D); quad(276.42, 594.67, 307.42, 612.67, 307.42, 738.92, 276.42, 738.92);
+  fill(#141B2D); quad(299.42, 608.02, 307.42, 612.67, 307.42, 738.92, 299.42, 738.92);
+  //EdificioAzul
+  fill(#1278A9); quad(307.42, 612.67, 331.42, 621.67, 331.42, 738.92, 307.42, 738.92);
+  fill(#0B497D); quad(307.42, 612.67, 311.09, 614.04, 311.09, 738.92, 307.42, 738.92);
+  //CuadorAzulConCubosEnLaParteInferior
+  fill(#122449); quad(331.42, 621.67, 370.84, 627.09, 370.84, 681, 331.42, 681);
+  fill(#183260); quad(331.42, 621.67, 346.09, 623.68, 346.09, 681, 331.42, 681);
+  //CuboDelFondo
+  fill(#0F1A36); quad(331.42, 681, 370.84, 681, 370.84, 738.92, 331.42, 738.92);
+  //CuboAZulClaro
+  fill(#1E3544); quad(334.5, 687.09, 342.34, 687.09, 342.34, 738.92, 334.5, 738.92);
+  fill(#165D67); quad(332.25, 687.09, 340.09, 687.09, 340.09, 738.92, 332.25, 738.92);
+  fill(#16AFB0); quad(330.25, 687.09, 338.09, 687.09, 338.09, 738.92, 330.25, 738.92);
+  //CuboMorado
+  fill(#4F5C92); quad(344.09, 684.09, 363.09, 684.25, 363.09, 709.96, 344.09, 709.96);
+  fill(#69519F); quad(346.09, 686.09, 361.08, 686.96, 361.08, 707.25, 346.09, 707.25);
+  fill(#825FA9); quad(348.06, 689.63, 359.11, 689.63, 359.11, 704.59, 348.06, 704.59);
+  
+  //CuadorsDetrasDelMastil
+  fill(#203164); rect(398.42, 640.71, 37.83, 39.55);
+  fill(#09508D); rect(436.24, 640.71, 25, 39.52);
+  fill(#108277); rect(461.25, 640.71, 18, 39,521);
+  fill(#7B923B); rect(475.17, 640.71, 40, 39.52);
+  
+  //CuadrosDeLaParteInferiorDerecha
+  //Azul
+  fill(#7B923B); rect(393.75, 681, 41.167, 57.917);
+  fill(#7B923B); rect(409.54, 692.42, 15.5, 46.5);
+  //Rojo
+  fill(#D54027); rect(433.67, 681, 50.25, 57.917);
+  fill(#A32F1F); rect(441.04, 701.04, 29.125, 37.875);
+  //Azul
+  fill(#176AC6); rect(446.17, 711.67, 24, 27.25);
+  fill(#104F9E); rect(446.17, 711.67, 19.25, 17.083);
+  //Lineas
+  fill(#4F779E); rect(481.554, 681.003, 5.375, 57.917);
+  fill(#111131); rect(484.169, 681.003, 3.25, 57.917);
+  fill(#965481); rect(486.169, 681.003, 4.75, 57.917);
+  //Naranja
+  fill(#F05024); rect(490.919, 681.003, 27.833, 57.917);
+  //Lineas
+  stroke(#FED139); strokeWeight(5); line(479.59, 683.75, 518.75, 683.75);
+  line(487.42, 704.59, 518.75, 704.59);
+  line(488.54, 724.42, 518.75, 724.42);
+  //LineaMangoGuitarra
+  fill(#000000); noStroke();
+  beginShape();
+    vertex(484.17, 620.29); 
+    vertex(509.67, 627.09);
+    vertex(520.67, 636.86);
+    vertex(484.17, 636.86);
+  endShape(CLOSE);
+  stroke(#EC4C26);
+  line(484.17, 620.29, 484.17, 636.86);
+  line(484.17, 636.86, 520.67, 636.86);
+   
+  //BordesGuitarra
+  fill(#7ECED9); noStroke();
+  beginShape();
+    vertex(50.75, 475.42); 
+    bezierVertex(60.75, 471.42, 128.59, 442,  204.67, 518.04);
+    vertex(250.04, 576.23);
+    vertex(187.75, 524.09); 
+    bezierVertex(181.39, 518.04, 126.17, 459.42,  50.75, 492.75);
+  endShape(CLOSE);
+}
+
+//Violonchelo
+void violonchelo(){
+  bordeViolonchelo();
+}
+void bordeViolonchelo(){
+  //Relleno
+  fill(#198FBD); noStroke();
+  beginShape();
+    vertex(93.42, 105.42);
+    bezierVertex(95.03, 104.53, 99.64, 124.37, 81.42, 115.42);
+    bezierVertex(64.49, 107.1, 105.42, 62.22, 132.42, 111.82);
+    bezierVertex(159.42, 161.42,  162.75, 214.42, 128.59, 255.42);
+    bezierVertex(76.28, 339.07, 147.94, 409.82, 138.42, 400.42);
+    bezierVertex(159.67, 416.67, 170.4, 433.08, 172.09, 442);
+    bezierVertex(172.92, 446.41, 183.17, 382.67, 218.09, 430.42);
+    bezierVertex(249.35, 473.18, 188.82, 465.8, 182.75, 465.09);
+    bezierVertex(238.09, 598.75, 345.92, 640.17, 416.75, 625.42);
+    bezierVertex(488.93, 610.39, 542.42, 655.77, 540.09, 650.75);
+    bezierVertex(537.37, 644.91, 513.25, 591.43, 526.75, 512.09);
+    bezierVertex(530.87, 487.91,  542.75, 411.49, 453.42, 350.09);
+    bezierVertex(443.7, 343.4, 421.17, 308.42, 421.42, 315.42);
+    bezierVertex(421.99, 331.46, 394.17, 387.42, 374.67, 343.4);
+    bezierVertex(355.17, 299.39, 398.37, 299.39, 398.09, 298.09);
+    bezierVertex(397.17, 293.91, 376.25, 281.25, 348.75, 233.42);
+    bezierVertex(345.06, 227, 318.25, 190.42, 238.09, 204.69);
+    bezierVertex(219.59, 208, 173.42, 210.75, 173.42, 148.75);
+    bezierVertex(173.42, 86.75, 115.72, 43.7, 82.09, 69.45);
+    bezierVertex(50.22, 93.78, 58.41, 110.45, 63.42, 120.75);
+    bezierVertex(65.98, 126.02, 78.67, 147.91, 97.42, 134.75);
+    bezierVertex(116.42, 121.42, 99.64, 109.09, 93.42, 105.42);
+  endShape(CLOSE);
+  
+  //MetodoElementosInternos
+  segundaParteViolonchelo();
+  parteInferiorViolonchelo();
+  
+  //Borde
+  noFill(); strokeWeight(5); stroke(#F3D338);
+  beginShape();
+    vertex(93.42, 105.42);
+    bezierVertex(95.03, 104.53, 99.64, 124.37, 81.42, 115.42);
+    bezierVertex(64.49, 107.1, 105.42, 62.22, 132.42, 111.82);
+    bezierVertex(159.42, 161.42,  162.75, 214.42, 128.59, 255.42);
+    bezierVertex(76.28, 339.07, 147.94, 409.82, 138.42, 400.42);
+    bezierVertex(159.67, 416.67, 170.4, 433.08, 172.09, 442);
+    bezierVertex(172.92, 446.41, 183.17, 382.67, 218.09, 430.42);
+    bezierVertex(249.35, 473.18, 188.82, 465.8, 182.75, 465.09);
+    bezierVertex(238.09, 598.75, 345.92, 640.17, 416.75, 625.42);
+    bezierVertex(488.93, 610.39, 542.42, 655.77, 540.09, 650.75);
+    bezierVertex(537.37, 644.91, 513.25, 591.43, 526.75, 512.09);
+    bezierVertex(530.87, 487.91,  542.75, 411.49, 453.42, 350.09);
+    bezierVertex(443.7, 343.4, 421.17, 308.42, 421.42, 315.42);
+    bezierVertex(421.99, 331.46, 394.17, 387.42, 374.67, 343.4);
+    bezierVertex(355.17, 299.39, 398.37, 299.39, 398.09, 298.09);
+    bezierVertex(397.17, 293.91, 376.25, 281.25, 348.75, 233.42);
+    bezierVertex(345.06, 227, 318.25, 190.42, 238.09, 204.69);
+    bezierVertex(219.59, 208, 173.42, 210.75, 173.42, 148.75);
+    bezierVertex(173.42, 86.75, 115.72, 43.7, 82.09, 69.45);
+    bezierVertex(50.22, 93.78, 58.41, 110.45, 63.42, 120.75);
+    bezierVertex(65.98, 126.02, 78.67, 147.91, 97.42, 134.75);
+    bezierVertex(116.42, 121.42, 99.64, 109.09, 93.42, 105.42);
+  endShape(CLOSE);
+  stroke(#F8D00F);
+}
+
+void parteInferiorViolonchelo(){
+  //Fondo
+  fill(#F1602D);
+  beginShape();
+    vertex(219.09, 536.09);
+    bezierVertex(245.29, 570.48, 280.41, 599.76, 325.09, 555.09);
+    bezierVertex(392.09, 488.09, 440.09, 498.42, 480.42, 561.09);
+    bezierVertex(487.88, 572.67, 486.36, 594.16, 484.23, 624.76);
+    bezierVertex(517.79, 631.46, 442.64, 620.03, 416.75, 625.42);
+    bezierVertex(349.73, 639.38, 258.09, 603.05, 233.77, 546.01);
+  endShape(CLOSE);
+  
+  noStroke(); 
+  //EdificioNegro
+  fill(#040707); rect(366.919, 539.919, 32.497, 88.21);
+  //VentanaRoja
+  fill(#F05654); rect(379.42, 546.92, 11, 59);
+  //Borde
+  fill(#117DB7); rect(366.92, 539.67, 5.787, 88.21);
+  
+  //EdificioAzul
+  fill(#095483); quad(433.42, 525.92, 463.98, 548.42, 463.98, 622.06, 433.42, 622.06);
+  int colorInicial= 255; float posInicialVerdes= 615.67; float posFinalVerdes= 545.17;
+  for(float i= posInicialVerdes; i>posFinalVerdes;i-=5){
+    if(colorInicial > 0){
+      fill(200, colorInicial, 0);
+      colorInicial-=4;
+    }
+    ellipse(448.09,i,15,2);
+  }
+  fill(#1F92C5); rect(434.92, 531.17, 3, 81.644);
+  
+  //CuadrosAtras
+  fill(#1F1E52); quad(274.09, 582.42, 307.75, 578.42, 307.75, 612.81, 280.42, 598.75);
+  fill(#054F80); quad(307.75, 578.42, 334.25, 557.59, 334.25, 622.06, 307.75, 612.81);
+  
+  //CurvaBlanco
+  fill(#E9ECF5); noStroke();
+  beginShape();
+    vertex(307.75, 569.16);
+    vertex(341.76, 539.67);
+    bezierVertex(343.42, 553.59, 338.75, 577.42, 307.75, 591.09);
+  endShape(CLOSE);
+  //CurvaAzul
+  fill(#117599); noStroke();
+  beginShape();
+    vertex(239.23, 562.08);
+    bezierVertex(246.42, 561.59, 264.59, 586.75, 307.75, 569.16);
+    vertex(307.75, 591.09);
+    bezierVertex(301.59, 594.92, 280.42, 603.05, 268.12, 588.09);
+  endShape(CLOSE);
+  //BordeCurva
+  noFill(); stroke(#FFFFFF); strokeWeight(2); bezier(278.42, 595.62, 337.94, 602.39 , 343.42, 545.54, 341.09, 540.24);
+  
+  //Borde
+  noFill(); stroke(#F3D338); strokeWeight(3);
+  beginShape();
+    vertex(219.09, 536.09);
+    bezierVertex(245.29, 570.48, 280.41, 599.76, 325.09, 555.09);
+    bezierVertex(392.09, 488.09, 440.09, 498.42, 480.42, 561.09);
+    bezierVertex(487.88, 572.67, 486.36, 594.16, 484.23, 624.76);
+  endShape();
+}
+
+void segundaParteViolonchelo(){
+  //TrompaSaxofone
+  fill(#118ABD);
+  beginShape();
+    vertex(182.75, 465.09);
+    bezierVertex(179.67, 462.46, 235.59, 487.91, 307.75, 442);
+    vertex(353.3, 424.54);
+    bezierVertex(351.7, 425.8, 339.95, 485.24, 343.42, 545.92);
+    vertex(343.42, 545.92);
+    vertex(293.92, 586.75);
+    vertex(255.5, 577.42);
+    bezierVertex(231.09, 553.93, 214.76, 524.5, 225.67, 544.17);
+    bezierVertex(349.73, 639.38, 258.09, 603.05, 233.77, 546.01);
+  endShape(CLOSE);
+  //OtraParte
+  fill(#0C1A37);
+  beginShape();
+    vertex(537.37, 475.1);
+    bezierVertex(525.42, 460.75, 457.17, 412.92, 351.3, 427.54);
+    vertex(343.67, 484.92);
+    vertex(343.75, 546.84);
+    vertex(416.09, 603.05);
+    vertex(484.98, 624.03);
+    vertex(533.09, 642.75);
+  endShape(CLOSE);
+  //Brillo
+  fill(#2793FF);
+  beginShape();
+    vertex(182.75, 465.09);
+    bezierVertex(187.17, 464.67, 205.42, 472.09, 244.34, 467.5);
+    bezierVertex(283.27, 462.92, 317.24, 436.43, 314.75, 442.48);
+    bezierVertex(300.42, 469.67, 315.67, 486.97, 316.09, 490.86);
+    vertex(317.75, 502.48);
+    bezierVertex(298.09, 501.2, 297.15, 471.86, 295.42, 466.75);
+    bezierVertex(294.78, 464.87, 286.24, 481.75, 252.42, 486.97);
+    bezierVertex(220.42, 491.92, 182.75, 465.09, 182.75, 465.09);
+  endShape(CLOSE);
+  //SombraSaxofonAzul
+  fill(#195DAB);
+  beginShape();
+    vertex(324.79, 435.84);
+    vertex(314.09, 470.42);
+    vertex(312.09, 577.42);
+    vertex(343.75, 546.84);
+    vertex(343.67, 484.92);
+    vertex(351.3, 427.54);
+    vertex(337.46, 429.87);
+  endShape(CLOSE);
+  //SombraSaxofonMorado
+  fill(#6856A4);
+  beginShape();
+    vertex(325.09, 444.29);
+    vertex(317.75, 475.09);
+    vertex(317.75, 502.48);
+    vertex(325.42, 507.08);
+    vertex(334.42, 502.48);
+    vertex(334.42, 483.75);
+    vertex(345.42, 439.74);
+  endShape(CLOSE);
+  //EsferasSaxofon
+  noStroke();
+  fill(#E1D7EA); ellipse(331.586, 473.412, 7.493, 7.493);
+  ellipse(327.84, 486.973, 7.493, 7.493);
+  
+  noStroke();  
+  //Torres, Azul
+  fill(#303E68); rect(433.79, 492.67, 32.249, 53.253);
+  fill(#1A93A1); rect(436.27, 496.75, 27.303, 45.086);
+  fill(#FFFFFF); ellipse(445.753, 503.586, 8.229, 8.229);
+  ellipse(456.561, 503.586, 8.229, 8.229);
+  ellipse(456.5611, 514.798, 5.819, 5.819);
+  //Negra
+  fill(#14201D); rect(465.42, 471.75, 29.33, 152.917);
+  fill(#183531); rect(470.42, 479.42, 19, 46.33);
+  fill(#E83525); ellipse(480.086, 487.086, 12, 8);
+  ellipse(480.086, 500.177, 12, 8);
+  ellipse(480.086, 513.269, 12, 8);
+  fill(#792B4A); ellipse(480.086, 533.419, 12, 8);
+  
+  //EdificioAzul
+  fill(#095483); quad(433.42, 525.92, 463.98, 548.42, 463.98, 622.06, 433.42, 622.06);
+  int colorInicial= 255; float posInicialVerdes= 533.72; float posFinalVerdes= 457.09;
+  for(float i= posInicialVerdes; i>posFinalVerdes;i-=5){
+    if(colorInicial > 0){
+      strokeWeight(1);
+      stroke(150, colorInicial, 0);
+      colorInicial-=4;
+    }
+    line(363.42,i,431.75,i);
+  }
+  
+  //CuelloSaxofone
+  stroke(#EC633A); strokeWeight(5); fill(#241E55);
+  beginShape();
+    vertex(313.45, 439.92);
+    bezierVertex(312.09, 439.74, 297.15, 466.75, 313.45, 490.09);
+    bezierVertex(321.46, 501.54, 320.26, 486.97, 325.67, 434.53);
+  endShape();
+  
+  //BordeColaSaxofon
+  stroke(#FFFFFF); strokeWeight(3); noFill();
+  beginShape();
+    vertex(351.3, 427.54);
+    bezierVertex(346.75, 447.29, 339.95, 485.24, 343.42, 545.92);
+  endShape();
+  
+  //LineaDivisora
+  noFill(); stroke(#6CCCE8); strokeWeight(3);
+  beginShape();
+    vertex(182.75, 465.09);
+    bezierVertex(202.09, 464.67, 246.42, 487.91, 307.75, 442);
+    bezierVertex(366.09, 395.42, 517.79, 439.74, 539.89, 478.09);
+  endShape();
+  
+}
